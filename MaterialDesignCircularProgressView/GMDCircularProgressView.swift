@@ -14,6 +14,8 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
     
     let circularLayer = CAShapeLayer()
 
+    private var timer : Timer?
+    var delay : TimeInterval!
     let inAnimation: CAAnimation = {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0.0
@@ -57,28 +59,14 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         
         circularLayer.position = center
         circularLayer.path = arcPath.cgPath
-        
+        delay = 0
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
-        
-        
-        
-    }
-    
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if(flag) {
-            animateProgressView()
-        }
-    }
-    
-    func animateProgressView() {
+    func animateProgressView(timer : Timer!) {
         circularLayer.removeAllAnimations()
         circularLayer.strokeColor = UIColor(red: 1.0, green: 204.0/255.0, blue: 0.0, alpha: 1.0).cgColor
         
@@ -94,7 +82,13 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         layer.addSublayer(circularLayer)
     }
     
+    func startProgressView() {
+        let aSelector = #selector(GMDCircularProgressView.animateProgressView)
+        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: aSelector, userInfo: nil, repeats: false);
+    }
+    
     func stopProgressView() {
+        timer?.invalidate();
         circularLayer.removeAllAnimations();
         circularLayer.removeFromSuperlayer();
     }

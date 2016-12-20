@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     var progressView : GMDCircularProgressView?
     var isAnimating : Bool!
+    @IBOutlet weak var delayText: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,9 +28,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tapStartStopButton(_ sender: UIButton) {
+        let numberFormatter = NumberFormatter()
+        let delay = numberFormatter.number(from: delayText.text!)
+        progressView?.delay = delay?.doubleValue
         if isAnimating == false {
             sender.setTitle("Stop", for: .normal)
-            progressView?.animateProgressView()
+            progressView?.startProgressView()
         } else {
             sender.setTitle("Start", for: .normal)
             progressView?.stopProgressView()
