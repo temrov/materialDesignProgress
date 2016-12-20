@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let progressView = GMDCircularProgressView(frame: CGRect(origin: CGPointZero, size: CGSize(width:50, height:50)))
+        let progressView = GMDCircularProgressView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:50, height:50)))
         progressView.center = self.view.center
         self.view.addSubview(progressView)
     }
