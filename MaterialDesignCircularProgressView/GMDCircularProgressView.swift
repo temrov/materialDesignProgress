@@ -34,7 +34,7 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
     
     let outAnimation: CAAnimation = {
         let animation = CABasicAnimation(keyPath: "strokeStart")
-        animation.beginTime = 0.5
+        animation.beginTime = 1.0
         animation.fromValue = 0.0
         animation.toValue = 1.0
         animation.duration = 1.0
@@ -60,6 +60,7 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         
         circularLayer.lineWidth = 3.0
         circularLayer.fillColor = nil
+        circularLayer.lineCap = "round"
         layer.addSublayer(circularLayer)
     }
     
@@ -95,7 +96,7 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         
         let strokeAnimationGroup = CAAnimationGroup()
         strokeAnimationGroup.duration = 1.0 + outAnimation.beginTime
-        strokeAnimationGroup.repeatCount = 1
+        strokeAnimationGroup.repeatCount = MAXFLOAT
         strokeAnimationGroup.animations = [inAnimation, outAnimation]
         strokeAnimationGroup.delegate = self
         
