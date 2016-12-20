@@ -8,37 +8,29 @@
 
 import UIKit
 
+
+
 class GMDCircularProgressView: UIView, CAAnimationDelegate {
     
     let circularLayer = CAShapeLayer()
-    /*
-    let googleColors = [
-        UIColor(red:0.282, green:0.522, blue:0.929, alpha:1),
-        UIColor(red:0.859, green:0.196, blue:0.212, alpha:1),
-        UIColor(red:0.957, green:0.761, blue:0.051, alpha:1),
-        UIColor(red:0.235, green:0.729, blue:0.329, alpha:1)
-    ]
-    */
-    let googleColors = [
-        UIColor(red: 1.0, green: 204.0/255.0, blue: 0.0, alpha: 1.0)
-    ]
+
     let inAnimation: CAAnimation = {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0.0
         animation.toValue = 1.0
-        animation.duration = 1.0
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        animation.duration = 1.2
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
 
         return animation
     }()
     
     let outAnimation: CAAnimation = {
         let animation = CABasicAnimation(keyPath: "strokeStart")
-        animation.beginTime = 1.0
+        animation.beginTime = 0.7
         animation.fromValue = 0.0
         animation.toValue = 1.0
-        animation.duration = 1.0
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.duration = 1.2
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         
         return animation
     }()
@@ -47,13 +39,11 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.fromValue = 0.0
         animation.toValue = 2 * M_PI
-        animation.duration = 2.0
+        animation.duration = 1.5
         animation.repeatCount = MAXFLOAT
         
         return animation
     }()
-    
-    var colorIndex : Int = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,7 +51,13 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         circularLayer.lineWidth = 3.0
         circularLayer.fillColor = nil
         circularLayer.lineCap = "round"
-        layer.addSublayer(circularLayer)
+        let center = CGPoint(x: bounds.midX, y: bounds.midY)
+        let radius = 18.5 as CGFloat
+        let arcPath = UIBezierPath(arcCenter: CGPoint.zero, radius: radius, startAngle: CGFloat(M_PI_2), endAngle: CGFloat(M_PI_2 + (2 * M_PI)), clockwise: true)
+        
+        circularLayer.position = center
+        circularLayer.path = arcPath.cgPath
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,16 +67,9 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let center = CGPoint(x: bounds.midX, y: bounds.midY)
-        //let radius = min(bounds.width, bounds.height) / 2 - circularLayer.lineWidth / 2
-        let radius = 18.5 as CGFloat
-        let arcPath = UIBezierPath(arcCenter: CGPoint.zero, radius: radius, startAngle: CGFloat(M_PI_2), endAngle: CGFloat(M_PI_2 + (2 * M_PI)), clockwise: true)
         
-        circularLayer.position = center
-        circularLayer.path = arcPath.cgPath
         
-        animateProgressView()
-        circularLayer.add(rotationAnimation, forKey: "rotateAnimation")
+        
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
@@ -90,20 +79,23 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
     }
     
     func animateProgressView() {
-        circularLayer.removeAnimation(forKey: "strokeAnimation")
-        
-        circularLayer.strokeColor = googleColors[colorIndex].cgColor
+        circularLayer.removeAllAnimations()
+        circularLayer.strokeColor = UIColor(red: 1.0, green: 204.0/255.0, blue: 0.0, alpha: 1.0).cgColor
         
         let strokeAnimationGroup = CAAnimationGroup()
-        strokeAnimationGroup.duration = 1.0 + outAnimation.beginTime
+        strokeAnimationGroup.duration = max(inAnimation.beginTime + inAnimation.duration, outAnimation.beginTime + outAnimation.duration)
         strokeAnimationGroup.repeatCount = MAXFLOAT
-        strokeAnimationGroup.animations = [inAnimation, outAnimation]
+        strokeAnimationGroup.animations = [outAnimation, inAnimation]
         strokeAnimationGroup.delegate = self
-        
+      
+        circularLayer.add(rotationAnimation, forKey: "rotateAnimation")
         circularLayer.add(strokeAnimationGroup, forKey: "strokeAnimation")
-/*
-        colorIndex += 1;
-        colorIndex = colorIndex % googleColors.count;
- */
+        
+        layer.addSublayer(circularLayer)
+    }
+    
+    func stopProgressView() {
+        circularLayer.removeAllAnimations();
+        circularLayer.removeFromSuperlayer();
     }
 }

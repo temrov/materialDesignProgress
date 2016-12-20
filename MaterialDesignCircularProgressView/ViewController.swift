@@ -9,14 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    var progressView : GMDCircularProgressView?
+    var isAnimating : Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let progressView = GMDCircularProgressView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:50, height:50)))
-        progressView.center = self.view.center
-        self.view.addSubview(progressView)
+        progressView = GMDCircularProgressView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:50, height:50)))
+        progressView?.center = self.view.center
+        self.view.addSubview(progressView!)
+        isAnimating = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,5 +26,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func tapStartStopButton(_ sender: UIButton) {
+        if isAnimating == false {
+            sender.setTitle("Stop", for: .normal)
+            progressView?.animateProgressView()
+        } else {
+            sender.setTitle("Start", for: .normal)
+            progressView?.stopProgressView()
+        }
+        isAnimating = !isAnimating
+    }
 }
 
