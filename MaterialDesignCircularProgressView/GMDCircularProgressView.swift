@@ -20,7 +20,7 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0.0
         animation.toValue = 1.0
-        animation.duration = 1.2
+        animation.duration = 1.0
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
 
         return animation
@@ -31,7 +31,7 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         animation.beginTime = 0.7
         animation.fromValue = 0.0
         animation.toValue = 1.0
-        animation.duration = 1.2
+        animation.duration = 1.0
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         
         return animation
