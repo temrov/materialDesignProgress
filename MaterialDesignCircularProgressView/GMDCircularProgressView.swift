@@ -60,13 +60,14 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         circularLayer.position = center
         circularLayer.path = arcPath.cgPath
         delay = 0
+        NotificationCenter.default.addObserver(self, selector: #selector(GMDCircularProgressView.backFromBackground), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
         
-    func animateProgressView(timer : Timer!) {
+    func animateProgressView(timer : Timer?) {
         circularLayer.removeAllAnimations()
         circularLayer.strokeColor = UIColor(red: 1.0, green: 204.0/255.0, blue: 0.0, alpha: 1.0).cgColor
         
@@ -82,9 +83,17 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         layer.addSublayer(circularLayer)
     }
     
+    func backFromBackground(notification: Notification){
+        //Take Action on Notification
+        if isActive() {
+            animateProgressView(timer: nil);
+        }
+    }
+    
     func startProgressView() {
         let aSelector = #selector(GMDCircularProgressView.animateProgressView)
         timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: aSelector, userInfo: nil, repeats: false);
+        
     }
     
     func stopProgressView() {
@@ -92,4 +101,13 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         circularLayer.removeAllAnimations();
         circularLayer.removeFromSuperlayer();
     }
+    
+    func isActive() -> Bool {
+        return circularLayer.superlayer != nil
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self);
+    }
+    
 }
