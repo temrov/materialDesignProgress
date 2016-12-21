@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		593CD1D81E0A74DF00BFFC7A /* IFDeterminateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593CD1D71E0A74DF00BFFC7A /* IFDeterminateProgress.swift */; };
+		593CD1DA1E0AB4B500BFFC7A /* IFMaterialProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593CD1D91E0AB4B500BFFC7A /* IFMaterialProgressView.swift */; };
 		8784DFEC1CF1DF7900974179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8784DFEB1CF1DF7900974179 /* AppDelegate.swift */; };
 		8784DFEE1CF1DF7900974179 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8784DFED1CF1DF7900974179 /* ViewController.swift */; };
 		8784DFF11CF1DF7900974179 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8784DFEF1CF1DF7900974179 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		593CD1D71E0A74DF00BFFC7A /* IFDeterminateProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IFDeterminateProgress.swift; sourceTree = "<group>"; };
+		593CD1D91E0AB4B500BFFC7A /* IFMaterialProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IFMaterialProgressView.swift; sourceTree = "<group>"; };
 		8784DFE81CF1DF7900974179 /* MaterialDesignCircularProgressView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaterialDesignCircularProgressView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8784DFEB1CF1DF7900974179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8784DFED1CF1DF7900974179 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				8784E01C1CF1E18200974179 /* IFIndeterminateProgress.swift */,
 				593CD1D71E0A74DF00BFFC7A /* IFDeterminateProgress.swift */,
+				593CD1D91E0AB4B500BFFC7A /* IFMaterialProgressView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			files = (
 				593CD1D81E0A74DF00BFFC7A /* IFDeterminateProgress.swift in Sources */,
 				8784DFEE1CF1DF7900974179 /* ViewController.swift in Sources */,
+				593CD1DA1E0AB4B500BFFC7A /* IFMaterialProgressView.swift in Sources */,
 				8784E01D1CF1E18200974179 /* IFIndeterminateProgress.swift in Sources */,
 				8784DFEC1CF1DF7900974179 /* AppDelegate.swift in Sources */,
 			);

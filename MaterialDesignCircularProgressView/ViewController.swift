@@ -9,8 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var progressView : IFIndeterminateProgress?
-    var determinateProgressView : IFDeterminateProgress?
+    var progressView : IFMaterialProgressView?
+    var determinateProgressView : IFMaterialProgressView?
     var isAnimating : Bool!
     @IBOutlet weak var delayText: UITextField!
     
@@ -19,14 +19,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        progressView = IFIndeterminateProgress(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:50, height:50)))
+        progressView = IFMaterialProgressView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:50, height:50)))
         progressView?.center = self.view.center
         self.view.addSubview(progressView!)
         
         
-        determinateProgressView = IFDeterminateProgress(frame: CGRect(origin: CGPoint(x:100, y:300), size: CGSize(width:50, height:50)))
+        determinateProgressView = IFMaterialProgressView(frame: CGRect(origin: CGPoint(x:100, y:300), size: CGSize(width:50, height:50)))
+        determinateProgressView?.isDeterminate = true
         self.view.addSubview(determinateProgressView!)
-        determinateProgressView!.delay = 5
+        determinateProgressView!.delay = 3
+        determinateProgressView!.startProgressView(startValue: determinatePos)
         isAnimating = false
     }
 
@@ -43,23 +45,39 @@ class ViewController: UIViewController {
             sender.setTitle("Stop", for: .normal)
             progressView?.startProgressView()
             
-            determinateProgressView!.startProgressView(startValue: determinatePos)
             
         } else {
             sender.setTitle("Start", for: .normal)
             progressView?.stopProgressView()
             
+            
+        }
+        isAnimating = !isAnimating
+    }
+    
+    @IBOutlet weak var incrementButton: UIButton!
+    
+    @IBAction func incrementButtonTap(_ sender: UIButton) {
+        if determinateProgressView?.isDeterminate == true {
             determinatePos += 0.1
+            
             determinateProgressView!.updateProgress(newValue: determinatePos)
             
-            if determinatePos > 1 {
-                determinateProgressView?.stopProgressView()
-                determinateProgressView?.removeFromSuperview()
-                
+            if determinatePos >= 1 {
+                determinatePos = 0
             }
         }
+    }
+    
+    @IBAction func determinateButtonTap(_ sender: UIButton) {
+        if determinateProgressView?.isDeterminate == true {
+            sender.setTitle("Determinate", for: .normal)
+        } else {
+            sender.setTitle("Indeterminate", for: .normal)
+        }
+        determinateProgressView?.isDeterminate = !(determinateProgressView?.isDeterminate)!
         
-        isAnimating = !isAnimating
+        incrementButton.isEnabled = (determinateProgressView?.isDeterminate)!
     }
 }
 

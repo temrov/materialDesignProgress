@@ -1,5 +1,5 @@
 //
-//  GMDCircularProgressView.swift
+//  IFIndeterminateProgress.swift
 //  MaterialDesignCircularProgressView
 //
 //  Created by Narbeh Mirzaei on 5/22/16.
