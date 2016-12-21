@@ -51,6 +51,12 @@ class ViewController: UIViewController {
             
             determinatePos += 0.1
             determinateProgressView!.updateProgress(newValue: determinatePos)
+            
+            if determinatePos > 1 {
+                determinateProgressView?.stopProgressView()
+                determinateProgressView?.removeFromSuperview()
+                
+            }
         }
         
         isAnimating = !isAnimating

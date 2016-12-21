@@ -48,10 +48,10 @@ class IFDeterminateProgress: UIView, CAAnimationDelegate {
     private func validatePositionValue(position : CGFloat) -> (CGFloat){
         var validatedPosition : CGFloat
         if position > 1.0 {
-            NSLog("position = %@. Max value considered to be equal to 1.0", position)
+            NSLog("position = %f. Max value considered to be equal to 1.0", position)
             validatedPosition = 1.0
         } else if position < 0.0 {
-            NSLog("position = %@. Min value considered to be equal to 0.0", position)
+            NSLog("position = %f. Min value considered to be equal to 0.0", position)
             validatedPosition = 0.0
         } else {
             validatedPosition = position
