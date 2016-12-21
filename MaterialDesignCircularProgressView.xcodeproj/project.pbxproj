@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		593CD1D81E0A74DF00BFFC7A /* IFDeterminateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593CD1D71E0A74DF00BFFC7A /* IFDeterminateProgress.swift */; };
 		8784DFEC1CF1DF7900974179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8784DFEB1CF1DF7900974179 /* AppDelegate.swift */; };
 		8784DFEE1CF1DF7900974179 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8784DFED1CF1DF7900974179 /* ViewController.swift */; };
 		8784DFF11CF1DF7900974179 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8784DFEF1CF1DF7900974179 /* Main.storyboard */; };
@@ -14,7 +15,7 @@
 		8784DFF61CF1DF7900974179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8784DFF41CF1DF7900974179 /* LaunchScreen.storyboard */; };
 		8784E0011CF1DF7900974179 /* MaterialDesignCircularProgressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8784E0001CF1DF7900974179 /* MaterialDesignCircularProgressViewTests.swift */; };
 		8784E00C1CF1DF7900974179 /* MaterialDesignCircularProgressViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8784E00B1CF1DF7900974179 /* MaterialDesignCircularProgressViewUITests.swift */; };
-		8784E01D1CF1E18200974179 /* GMDCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8784E01C1CF1E18200974179 /* GMDCircularProgressView.swift */; };
+		8784E01D1CF1E18200974179 /* IFIndeterminateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8784E01C1CF1E18200974179 /* IFIndeterminateProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		593CD1D71E0A74DF00BFFC7A /* IFDeterminateProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IFDeterminateProgress.swift; sourceTree = "<group>"; };
 		8784DFE81CF1DF7900974179 /* MaterialDesignCircularProgressView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaterialDesignCircularProgressView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8784DFEB1CF1DF7900974179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8784DFED1CF1DF7900974179 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +50,7 @@
 		8784E0071CF1DF7900974179 /* MaterialDesignCircularProgressViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialDesignCircularProgressViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8784E00B1CF1DF7900974179 /* MaterialDesignCircularProgressViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialDesignCircularProgressViewUITests.swift; sourceTree = "<group>"; };
 		8784E00D1CF1DF7900974179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8784E01C1CF1E18200974179 /* GMDCircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMDCircularProgressView.swift; sourceTree = "<group>"; };
+		8784E01C1CF1E18200974179 /* IFIndeterminateProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IFIndeterminateProgress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +149,8 @@
 		8784E01B1CF1E15200974179 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8784E01C1CF1E18200974179 /* GMDCircularProgressView.swift */,
+				8784E01C1CF1E18200974179 /* IFIndeterminateProgress.swift */,
+				593CD1D71E0A74DF00BFFC7A /* IFDeterminateProgress.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -287,8 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				593CD1D81E0A74DF00BFFC7A /* IFDeterminateProgress.swift in Sources */,
 				8784DFEE1CF1DF7900974179 /* ViewController.swift in Sources */,
-				8784E01D1CF1E18200974179 /* GMDCircularProgressView.swift in Sources */,
+				8784E01D1CF1E18200974179 /* IFIndeterminateProgress.swift in Sources */,
 				8784DFEC1CF1DF7900974179 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

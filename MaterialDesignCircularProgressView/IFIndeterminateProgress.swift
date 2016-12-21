@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class GMDCircularProgressView: UIView, CAAnimationDelegate {
+class IFIndeterminateProgress: UIView, CAAnimationDelegate {
     
     let circularLayer = CAShapeLayer()
 
@@ -60,7 +60,7 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         circularLayer.position = center
         circularLayer.path = arcPath.cgPath
         delay = 0
-        NotificationCenter.default.addObserver(self, selector: #selector(GMDCircularProgressView.backFromBackground), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(IFIndeterminateProgress.backFromBackground), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -91,7 +91,7 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
     }
     
     func startProgressView() {
-        let aSelector = #selector(GMDCircularProgressView.animateProgressView)
+        let aSelector = #selector(IFIndeterminateProgress.animateProgressView)
         timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: aSelector, userInfo: nil, repeats: false);
         
     }
