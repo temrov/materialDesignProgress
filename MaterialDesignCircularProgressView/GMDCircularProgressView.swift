@@ -55,7 +55,7 @@ class GMDCircularProgressView: UIView, CAAnimationDelegate {
         circularLayer.lineCap = "round"
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
         let radius = 18.5 as CGFloat
-        let arcPath = UIBezierPath(arcCenter: CGPoint.zero, radius: radius, startAngle: CGFloat(M_PI_2), endAngle: CGFloat(M_PI_2 + (2 * M_PI)), clockwise: true)
+        let arcPath = UIBezierPath(arcCenter: CGPoint.zero, radius: radius, startAngle: CGFloat(-M_PI_2), endAngle: CGFloat(-M_PI_2 + (2 * M_PI)), clockwise: true)
         
         circularLayer.position = center
         circularLayer.path = arcPath.cgPath
